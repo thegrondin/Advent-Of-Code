@@ -2,6 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef enum {
+    FORWARD,
+    DOWN,
+    UP,
+} MoveNames;
+
+typedef struct {
+    MoveNames name;
+    int units;
+} Move;
+
 int get_num_lines_in_file(FILE * file) {
     char ch;
     int lines = 0;
@@ -13,20 +24,8 @@ int get_num_lines_in_file(FILE * file) {
             lines++;
         }
     }
-
     return lines+1;
 }
-
-typedef enum {
-    FORWARD,
-    DOWN,
-    UP,
-}MoveNames;
-
-typedef struct {
-    MoveNames name;
-    int units;
-} Move;
 
 MoveNames get_type_from_char(char c) {
     switch (c) {
@@ -77,7 +76,6 @@ void part1(void) {
                 depth -= cur_input.units;
         }
     }
-
     printf("(part1) Results : %d (horizontal) * %d (depth) = %d\n", horizontal, depth, horizontal * depth);
 }
 
@@ -118,12 +116,10 @@ void part2(void) {
                 aim -= cur_input.units;
         }
     }
-
     printf("(part2) Results : %d (horizontal) * %d (depth) = %d", horizontal, depth, horizontal * depth);
-
 }
 
-int main() {
+int main(void) {
     part1();
     part2();
     return 0;
