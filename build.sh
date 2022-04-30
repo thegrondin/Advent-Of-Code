@@ -1,2 +1,5 @@
- gcc $1/main.c -Wall -Og --output $1.out
- ./$1.out
+ #!/usr/bin/env bash
+ 
+ cd ./$1
+ gcc main.c -Wall -Og --output main.out
+ ./main.out
